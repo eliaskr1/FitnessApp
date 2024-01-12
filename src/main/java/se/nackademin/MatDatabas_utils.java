@@ -3,6 +3,7 @@ package se.nackademin;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class MatDatabas_utils {
     // Metoder för att skapa våran mat databas
     private static Map<String, Double> foodMap;
@@ -16,10 +17,25 @@ public class MatDatabas_utils {
     }
 
     public static void displayFoodList() {
+        int count = 0;
+        int index = 1;
+
         for (String food : foodMap.keySet()) {
-            System.out.println(capitalFirstLetter(food));
+
+            System.out.printf("|| %02d %-17s", index, capitalFirstLetter(food)); // Justerat formatet
+            index++;
+
+            count++;
+
+            // Om 4 produkter har skrivits ut, radbrytning och återställning av count.
+            if (count % 4 == 0) {
+                System.out.print("||");
+                System.out.println();
+                count = 0;
+            }
         }
     }
+
     public static double calculateCalories(String foodName, double amountInGrams) {
         // Kontrollera om maten finns i databasen
         if (foodMap.containsKey(foodName.toLowerCase())) {
