@@ -10,10 +10,11 @@ public class Main {
         while (true){
 
 
-            System.out.println("Välkommen! Ange 1 eller 2 för att använda appens funktioner: ");
+            System.out.println('\n' + "*** VÄLKOMMEN TILL FITNESSAPP ***\n");
             System.out.println("1. BMI Calculator");
             System.out.println("2. Macro tracker");
-            System.out.println("3. Avsluta programmet");
+            System.out.println("3. Avsluta programmet\n");
+            System.out.print("Ange 1 eller 2 för att använda appens funktioner: ");
 
             choice = scanner.nextLine();
 
