@@ -1,5 +1,9 @@
 package se.nackademin;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
 public class BMI_utils {
     public static double calculateBMI(double weight, double height) {
         return weight / (height * height);
@@ -120,7 +124,27 @@ public class BMI_utils {
         return suggestedCaloricIntake;
     }
 
-    static int calculateDaysToReachGoal(double intendedCaloricDeficitPerDay, double kilogramsToLose) {
-        return (int) Math.ceil((kilogramsToLose * 7700) / intendedCaloricDeficitPerDay);
+
+    static Long frågaOmDatum(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ange ett datum där du vill nå ditt viktmål(ÅÅÅÅ-MM-DD): ");
+        String inputDatum = scanner.next();
+
+        long antalDagar = 0;
+
+        LocalDate valtDatum = LocalDate.parse(inputDatum);
+        //Räknar dagar från från dagens datum till datum vi har valt
+        antalDagar = LocalDate.now().until(valtDatum, ChronoUnit.DAYS);
+        System.out.println("Ogiltigt datumformat. Använd formatet ÅÅÅÅ-MM-DD.");
+        scanner.close();
+
+
+        return antalDagar;
+
+    }
+    //Räknar hur mycket kalorier man behöver minska
+    static int antalerKalorierTillDatum(double kilogramsToLose) {
+        return (int) Math.ceil((kilogramsToLose * 7700) / frågaOmDatum());
     }
 }
