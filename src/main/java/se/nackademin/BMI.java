@@ -1,7 +1,9 @@
 package se.nackademin;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Scanner;
 
 import static se.nackademin.BMI_utils.*;
 
@@ -32,20 +34,23 @@ public class BMI {
         } else if (goal == 2) { //Öka intag
             int caloriesForGain = suggestedCaloricIntake + 300;
             System.out.println("Ditt dagliga kaloriintag för att öka i vikt: " + caloriesForGain);
+
         } else if (goal == 3) { //Minska intag
             double intendedCaloricDeficitPerDay = getValidNumericInput("Ange hur stor kaloriunderskott du vill ha (i kalorier): ");
             double kilogramsToLose = getValidNumericInput("Ange hur många kilo du vill gå ner: ");
 
-            int daysToReachGoal = calculateDaysToReachGoal(intendedCaloricDeficitPerDay, kilogramsToLose);
 
-            Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DAY_OF_YEAR, daysToReachGoal);
+            double kgAttGåNer = getValidNumericInput("Ange hur många kilo du vill gå ner: ");
+            int kalorierAttMinska = antalerKalorierTillDatum(kgAttGåNer);
+            int totalaMängdenKalorierMinskning = suggestedCaloricIntake - kalorierAttMinska;
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String dateToReachGoal = sdf.format(calendar.getTime());
+            System.out.println("Antal kalorier att minska: " + kalorierAttMinska + " Kalorier"
+            + "\n Din totala mängd kalorier blir " + totalaMängdenKalorierMinskning);
+            
 
-            System.out.println("För att gå ner " + kilogramsToLose + " kilo med ett underskott på "
-                    + intendedCaloricDeficitPerDay + " kalorier, kan du nå ditt mål om " + daysToReachGoal + " dagar, datum: " + dateToReachGoal);
+
+
+
         }
     }
 }
