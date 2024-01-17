@@ -38,16 +38,16 @@ public class MatDatabas {
         //  Vi låter användaren välja mat
 
         while (true) {
-            System.out.println("Lägga till mat?(Ja/Nej)");
+            System.out.print("Lägga till mer mat?(Ja/Nej) ");
             String appendFood = Main.scanner.nextLine().toLowerCase();
             if (appendFood.equals("nej"))
                 break;
 
-            System.out.println("Matlistan:");
-            displayFoodList();
-            System.out.print("Välj en produkt: ");
+            System.out.println('\n' + "----------------------------------------------MATLISTAN---------------------------------------");
+            displayFoodList(); // Antagligen en metod för att skriva ut matlistan
+            System.out.println('\n' + "----------------------------------------------------------------------------------------------");
+            System.out.print('\n' + "Välj en produkt: ");
             String selectedFood = Main.scanner.nextLine().toLowerCase(); // Convert to lowercase
-
 
             // Vi låter användaren ange vikt i gram
             System.out.print("Hur många gram åt du?: ");
