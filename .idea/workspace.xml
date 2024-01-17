@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c040b21b-87c5-46d3-ad3a-4ef28af946f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/BMI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/BMI_utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/MatDatabas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/MatDatabas_utils.java" afterDir="false" />
+    <list default="true" id="c040b21b-87c5-46d3-ad3a-4ef28af946f2" name="Changes" comment="Har ändrat så att man skriva till vilket datum man vill minska sin vikt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/se/nackademin/BMI_utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/BMI_utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,11 +21,33 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "RostamAkman"
+  }
 }]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="d96c4d68-f46d-46a7-bbb5-e0aebd39ff18" />
+        <option name="url" value="https://github.com/eliaskr1/FitnessApp" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2aoTZOm7a6rKdPNIG7LAHvMzw0Q" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -45,8 +59,9 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Rostems",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Administrator/Fitnessapp/FitnessApp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,10 +90,34 @@
       <option name="presentableId" value="Default" />
       <updated>1704983991929</updated>
       <workItem from="1704983994696" duration="2855000" />
+      <workItem from="1705233983026" duration="464000" />
+      <workItem from="1705234459763" duration="7899000" />
+      <workItem from="1705322395879" duration="3308000" />
     </task>
+    <task id="LOCAL-00001" summary="Har ändrat så att man skriva till vilket datum man vill minska sin vikt">
+      <option name="closed" value="true" />
+      <created>1705416443758</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1705416443758</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Har ändrat så att man skriva till vilket datum man vill minska sin vikt">
+      <option name="closed" value="true" />
+      <created>1705416512909</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705416512909</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Har ändrat så att man skriva till vilket datum man vill minska sin vikt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Har ändrat så att man skriva till vilket datum man vill minska sin vikt" />
   </component>
 </project>
