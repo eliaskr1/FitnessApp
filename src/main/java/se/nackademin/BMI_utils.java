@@ -126,18 +126,17 @@ public class BMI_utils {
 
 
     static Long frågaOmDatum(){
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Ange ett datum där du vill nå ditt viktmål(ÅÅÅÅ-MM-DD): ");
-        String inputDatum = scanner.next();
+        String inputDatum = Main.scanner.next();
 
         long antalDagar = 0;
 
         LocalDate valtDatum = LocalDate.parse(inputDatum);
         //Räknar dagar från från dagens datum till datum vi har valt
         antalDagar = LocalDate.now().until(valtDatum, ChronoUnit.DAYS);
-        System.out.println("Ogiltigt datumformat. Använd formatet ÅÅÅÅ-MM-DD.");
-        scanner.close();
+
+        Main.scanner.nextLine();
 
 
         return antalDagar;
