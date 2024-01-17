@@ -15,6 +15,10 @@ public class MatDatabas_utils {
         foodMap.put(getFirstWord(foodName).toLowerCase(), caloriesPer100Grams);
     }
 
+    public double getCalories(String foodName) {
+        return foodMap.getOrDefault(getFirstWord(foodName).toLowerCase(), 0.0);
+    }
+
     public static void displayFoodList() {
         for (String food : foodMap.keySet()) {
             System.out.println(capitalFirstLetter(food));
