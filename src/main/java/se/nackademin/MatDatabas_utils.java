@@ -3,6 +3,8 @@ package se.nackademin;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.round;
+
 
 public class MatDatabas_utils {
     // Metoder för att skapa våran mat databas
@@ -40,7 +42,7 @@ public class MatDatabas_utils {
         // Kontrollera om maten finns i databasen
         if (foodMap.containsKey(foodName.toLowerCase())) {
             double caloriesPer100Grams = foodMap.get(foodName.toLowerCase());
-            return (caloriesPer100Grams / 100.0) * amountInGrams;
+            return round((caloriesPer100Grams / 100.0) * amountInGrams);
         } else {
             System.out.println("Maten hittades inte i databasen.");
             return 0;

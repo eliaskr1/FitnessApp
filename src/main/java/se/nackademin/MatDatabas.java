@@ -1,6 +1,7 @@
 package se.nackademin;
 
 
+
 import static se.nackademin.MatDatabas_utils.displayFoodList;
 
 public class MatDatabas {
@@ -74,6 +75,7 @@ public class MatDatabas {
             }
             // Utifrån användarens val i selectedFoods skickar vi värdet till calculateCalories metoden.
             //Användares val i gram finns i amountInGrams, värde skickas till calculateCalories metoden.
+
             double calories = MatDatabas_utils.calculateCalories(selectedFoodInput, amountInGrams);
             System.out.println("Calories: " + calories);
 
