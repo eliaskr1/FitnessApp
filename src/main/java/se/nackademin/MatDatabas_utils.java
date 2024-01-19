@@ -28,7 +28,7 @@ public class MatDatabas_utils {
             count++;
 
             // Om 4 produkter har skrivits ut, radbrytning och återställning av count.
-            if (count % 4 == 0) {
+            if (count % 5 == 0) {
                 System.out.print("||");
                 System.out.println();
                 count = 0;
@@ -46,6 +46,22 @@ public class MatDatabas_utils {
             return 0;
         }
     }
+
+    public static String convertIntToFood(String selectedProductInt) {
+        int selectedProduct = (Integer.parseInt(selectedProductInt));
+        int count = 1;
+
+        for (String food : foodMap.keySet()) {
+            if (count == selectedProduct) {
+                return food;
+            }
+            count++;
+        }
+        return null;
+    }
+
+    // Hjälpmetod för att kolla om en sträng är en int
+
     private static String getFirstWord(String input) {
         return input.split("\\s+")[0];
     }
