@@ -7,31 +7,31 @@ public class MatDatabas {
     public static void macroTrack() {
         // Vi skapar en matdatabas
         MatDatabas_utils matDB = new MatDatabas_utils();
-        matDB.addFood("Kyckling (grillad)", 165);
-        matDB.addFood("Nötfärs (10% fett)", 250);
-        matDB.addFood("Lax (bakad)", 206);
-        matDB.addFood("Ris (kokt)", 130);
-        matDB.addFood("Pasta (kokt)", 130);
-        matDB.addFood("Ägg (kokt)", 155);
-        matDB.addFood("Mjölk (hel)", 61);
-        matDB.addFood("Broccoli (kokt)", 55);
-        matDB.addFood("Potatis (kokt)", 77);
+        matDB.addFood("Kyckling", 165);
+        matDB.addFood("Nötfärs", 250);
+        matDB.addFood("Lax", 206);
+        matDB.addFood("Ris", 130);
+        matDB.addFood("Pasta", 130);
+        matDB.addFood("Ägg", 155);
+        matDB.addFood("Mjölk", 61);
+        matDB.addFood("Broccoli", 55);
+        matDB.addFood("Potatis", 77);
         matDB.addFood("Banan", 89);
         matDB.addFood("Avokado", 160);
-        matDB.addFood("Havregryn (kokt)", 68);
-        matDB.addFood("Mandel (rostad)", 579);
-        matDB.addFood("Mörk choklad (70% kakao)", 604);
+        matDB.addFood("Havregryn)", 68);
+        matDB.addFood("Mandel", 579);
+        matDB.addFood("Mörkchoklad", 604);
         matDB.addFood("Granatäpple", 83);
         matDB.addFood("Blåbär", 57);
         matDB.addFood("Havrebröd", 68);
-        matDB.addFood("Röd paprika", 31);
+        matDB.addFood("Paprika", 31);
         matDB.addFood("Olivolja", 884);
         matDB.addFood("Fetaost", 264);
-        matDB.addFood("Yoghurt (grekisk)", 59);
-        matDB.addFood("Gröna ärtor (kokta)", 81);
-        matDB.addFood("Kalkonbröst (kokt)", 135);
-        matDB.addFood("Quinoa (kokt)", 120);
-        matDB.addFood("Cashewnötter (rostade)", 553);
+        matDB.addFood("Yoghurt", 59);
+        matDB.addFood("Ärtor", 81);
+        matDB.addFood("Kalkonbröst", 135);
+        matDB.addFood("Quinoa", 120);
+        matDB.addFood("Cashewnötter)", 553);
 
         //Spara totala kalorier här
         double totalCalories = 0.0;
