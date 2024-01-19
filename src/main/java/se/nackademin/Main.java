@@ -10,7 +10,10 @@ public class Main {
         while (true){
 
 
-            System.out.println('\n' + "*** VÄLKOMMEN TILL FITNESSAPP ***\n");
+            System.out.println("""
+
+                    *** VÄLKOMMEN TILL FITNESSAPP ***
+                    """);
             System.out.println("1. BMI Calculator");
             System.out.println("2. Macro tracker");
             System.out.println("3. Avsluta programmet\n");

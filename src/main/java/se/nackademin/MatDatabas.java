@@ -1,6 +1,7 @@
 package se.nackademin;
 
 
+
 import static se.nackademin.MatDatabas_utils.displayFoodList;
 
 public class MatDatabas {
@@ -18,7 +19,7 @@ public class MatDatabas {
         matDB.addFood("Potatis", 77);
         matDB.addFood("Banan", 89);
         matDB.addFood("Avokado", 160);
-        matDB.addFood("Havregryn)", 68);
+        matDB.addFood("Havregryn", 68);
         matDB.addFood("Mandel", 579);
         matDB.addFood("Mörkchoklad", 604);
         matDB.addFood("Granatäpple", 83);
@@ -31,7 +32,7 @@ public class MatDatabas {
         matDB.addFood("Ärtor", 81);
         matDB.addFood("Kalkonbröst", 135);
         matDB.addFood("Quinoa", 120);
-        matDB.addFood("Cashewnötter)", 553);
+        matDB.addFood("Cashewnötter", 553);
 
         //Spara totala kalorier här
         double totalCalories = 0.0;
@@ -43,30 +44,54 @@ public class MatDatabas {
             if (appendFood.equals("nej"))
                 break;
 
-            System.out.println('\n' + "----------------------------------------------MATLISTAN---------------------------------------");
+            System.out.println('\n' + "---------------------------------------------------------MATLISTAN---------------------------------------------------");
             displayFoodList(); // Antagligen en metod för att skriva ut matlistan
-            System.out.println('\n' + "----------------------------------------------------------------------------------------------");
+            System.out.println('\n' + "---------------------------------------------------------------------------------------------------------------------");
             System.out.print('\n' + "Välj en produkt: ");
-            String selectedFood = Main.scanner.nextLine().toLowerCase(); // Convert to lowercase
+            String selectedFoodInput = Main.scanner.nextLine().toLowerCase();// Convert to lowercase
 
-            // Vi låter användaren ange vikt i gram
-            System.out.print("Hur många gram åt du?: ");
-            double amountInGrams = Main.scanner.nextDouble();
+            // Intellij varnar för nullvärde. Här kontrolleras det om inmatningen endast innehåller mellanslag eller är tom
+            if (selectedFoodInput.trim().isEmpty()) {
+                System.out.println("Felaktig inmatning. Vänligen ange en giltig produkt.");
+                continue; // Gå till nästa steg
+            }
 
-            Main.scanner.nextLine();
+            double amountInGrams;
 
+            if (isInteger(selectedFoodInput)) {
+            // Användaren har angett en siffra som motsvarar produktnummer;
+                selectedFoodInput = MatDatabas_utils.convertIntToFood(selectedFoodInput);
+
+                // Vi låter användaren ange vikt i gram
+                System.out.print("Hur många gram åt du?: ");
+                amountInGrams = Main.scanner.nextDouble();
+                Main.scanner.nextLine(); // Läs upp överblivet nyttelinjetangent
+
+            } else {
+                // Vi låter användaren ange vikt i gram
+                System.out.print("Hur många gram åt du?: ");
+                amountInGrams = Main.scanner.nextDouble();
+                Main.scanner.nextLine(); // Läs upp överblivet nyttelinjetangent
+            }
             // Utifrån användarens val i selectedFoods skickar vi värdet till calculateCalories metoden.
             //Användares val i gram finns i amountInGrams, värde skickas till calculateCalories metoden.
-            //Detta ges till variabeln calories som sedan presenteras
-            double calories = MatDatabas_utils.calculateCalories(selectedFood, amountInGrams);
+
+            double calories = MatDatabas_utils.calculateCalories(selectedFoodInput, amountInGrams);
             System.out.println("Calories: " + calories);
 
             totalCalories += calories;
         }
+
         System.out.println("Totala kalorier: " + totalCalories);
-
-
-        Main.scanner.nextLine();
-
     }
+    private static boolean isInteger(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+
 }

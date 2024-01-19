@@ -3,6 +3,8 @@ package se.nackademin;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.round;
+
 
 public class MatDatabas_utils {
     // Metoder för att skapa våran mat databas
@@ -32,7 +34,7 @@ public class MatDatabas_utils {
             count++;
 
             // Om 4 produkter har skrivits ut, radbrytning och återställning av count.
-            if (count % 4 == 0) {
+            if (count % 5 == 0) {
                 System.out.print("||");
                 System.out.println();
                 count = 0;
@@ -44,12 +46,28 @@ public class MatDatabas_utils {
         // Kontrollera om maten finns i databasen
         if (foodMap.containsKey(foodName.toLowerCase())) {
             double caloriesPer100Grams = foodMap.get(foodName.toLowerCase());
-            return (caloriesPer100Grams / 100.0) * amountInGrams;
+            return round((caloriesPer100Grams / 100.0) * amountInGrams);
         } else {
             System.out.println("Maten hittades inte i databasen.");
             return 0;
         }
     }
+
+    public static String convertIntToFood(String selectedProductInt) {
+        int selectedProduct = (Integer.parseInt(selectedProductInt));
+        int count = 1;
+
+        for (String food : foodMap.keySet()) {
+            if (count == selectedProduct) {
+                return food;
+            }
+            count++;
+        }
+        return null;
+    }
+
+    // Hjälpmetod för att kolla om en sträng är en int
+
     private static String getFirstWord(String input) {
         return input.split("\\s+")[0];
     }
