@@ -12,8 +12,8 @@ public class BMI {
 
 
     public static void BMIcalc() {
-        double weight = getValidNumericInput("Hur mycket väger du (i kg)?: ");
-        double heightInCentimeters = getValidNumericInput("Hur lång är du (i cm)?: ");
+        double weight = getValidNumericInput(Optional.empty(), "Hur mycket väger du (i kg)?: ");
+        double heightInCentimeters = getValidNumericInput(Optional.empty(), "Hur lång är du (i cm)?: ");
 
         double heightInMeters = heightInCentimeters / 100.0;
 
@@ -37,11 +37,11 @@ public class BMI {
             System.out.println("Ditt dagliga kaloriintag för att öka i vikt: " + caloriesForGain);
 
         } else if (goal == 3) { //Minska intag
-            double intendedCaloricDeficitPerDay = getValidNumericInput("Ange hur stor kaloriunderskott du vill ha (i kalorier): ");
-            double kilogramsToLose = getValidNumericInput("Ange hur många kilo du vill gå ner: ");
+            double intendedCaloricDeficitPerDay = getValidNumericInput(Optional.empty(), "Ange hur stor kaloriunderskott du vill ha (i kalorier): ");
+            double kilogramsToLose = getValidNumericInput(Optional.empty(), "Ange hur många kilo du vill gå ner: ");
 
 
-            double kgAttGåNer = getValidNumericInput("Ange hur många kilo du vill gå ner: ");
+            double kgAttGåNer = getValidNumericInput(Optional.empty(), "Ange hur många kilo du vill gå ner: ");
             int kalorierAttMinska = antalerKalorierTillDatum(kgAttGåNer);
             int totalaMängdenKalorierMinskning = suggestedCaloricIntake - kalorierAttMinska;
 

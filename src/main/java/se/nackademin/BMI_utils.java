@@ -49,19 +49,22 @@ public class BMI_utils {
             }
         }
 
-        //Main.scanner.nextLine();
-
         return value;
     }
 
-    static double getValidNumericInput(String message) {
+    static double getValidNumericInput(Optional<String> testInput, String message) {
         double value = 0;
         boolean validInput = false;
         while (!validInput) {
             try {
-                System.out.print(message);
-                value = Double.parseDouble(Main.scanner.nextLine());
-                validInput = true;
+                if (testInput.isPresent()){
+                    value = Double.parseDouble(testInput.get());
+                    validInput = true;
+                } else {
+                    System.out.print(message);
+                    value = Double.parseDouble(Main.scanner.nextLine());
+                    validInput = true;
+                }
             } catch (NumberFormatException e) {
                 System.out.println("Ogiltigt val, vänligen välj en giltig siffra.");
             }

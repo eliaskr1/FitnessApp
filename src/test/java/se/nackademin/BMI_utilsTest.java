@@ -42,6 +42,11 @@ class BMI_utilsTest {
 
     @Test
     void getValidNumericInput() {
+        // Act
+        double result = BMI_utils.getValidNumericInput(Optional.of("1"), "");
+
+        // Assert
+        assertEquals(1.0, result);
     }
 
     @Test
