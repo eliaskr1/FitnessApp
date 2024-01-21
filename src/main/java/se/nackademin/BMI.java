@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Scanner;
+import java.util.Optional;
 
 import static se.nackademin.BMI_utils.*;
 
@@ -19,8 +20,8 @@ public class BMI {
         int bmi = (int) calculateBMI(weight, heightInMeters);
         System.out.println('\n' + "Ditt BMI är: " + bmi);
 
-        char gender = getValidGenderInput();
-        int age = getValidIntegerInput("Ange din ålder: ");
+        char gender = getValidGenderInput(Optional.empty());
+        int age = getValidIntegerInput(Optional.empty(), "Ange din ålder: ");
 
         int activityLevel = getValidActivityLevelInput();
 
@@ -46,11 +47,8 @@ public class BMI {
 
             System.out.println("Antal kalorier att minska: " + kalorierAttMinska + " Kalorier"
             + "\n Din totala mängd kalorier blir " + totalaMängdenKalorierMinskning);
-            
-
-
-
 
         }
+        Main.scanner.nextLine();
     }
 }
