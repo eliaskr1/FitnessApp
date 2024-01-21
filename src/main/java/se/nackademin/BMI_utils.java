@@ -27,7 +27,7 @@ public class BMI_utils {
                 System.out.println("Ogiltig köninmatning. Ange endast 'M' eller 'K'.");
             }
         }
-        //Main.scanner.nextLine();
+
         return gender;
     }
 
@@ -41,13 +41,14 @@ public class BMI_utils {
                     validInput = true;
                 } else {
                     System.out.print(message);
-                    value = Integer.parseInt(Main.scanner.next());
+                    value = Integer.parseInt(Main.scanner.nextLine());
                     validInput = true;
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Ogiltigt val, vänligen välj en giltig siffra.");
             }
         }
+
 
         return value;
     }
@@ -69,6 +70,7 @@ public class BMI_utils {
                 System.out.println("Ogiltigt val, vänligen välj en giltig siffra.");
             }
         }
+
         return value;
     }
 
