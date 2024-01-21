@@ -2,7 +2,7 @@ package se.nackademin;
 
 
 
-import static se.nackademin.MatDatabas_utils.displayFoodList;
+
 
 public class MatDatabas {
     public static void macroTrack() {
@@ -45,7 +45,7 @@ public class MatDatabas {
                 break;
 
             System.out.println('\n' + "---------------------------------------------------------MATLISTAN---------------------------------------------------");
-            displayFoodList(); // Antagligen en metod för att skriva ut matlistan
+            MatDatabas_utils.displayFoodList(); // Antagligen en metod för att skriva ut matlistan
             System.out.println('\n' + "---------------------------------------------------------------------------------------------------------------------");
             System.out.print('\n' + "Välj en produkt: ");
             String selectedFoodInput = Main.scanner.nextLine().toLowerCase();// Convert to lowercase
@@ -58,7 +58,7 @@ public class MatDatabas {
 
             double amountInGrams;
 
-            if (isInteger(selectedFoodInput)) {
+            if (MatDatabas_utils.isInteger(selectedFoodInput)) {
             // Användaren har angett en siffra som motsvarar produktnummer;
                 selectedFoodInput = MatDatabas_utils.convertIntToFood(selectedFoodInput);
 
@@ -84,14 +84,5 @@ public class MatDatabas {
 
         System.out.println("Totala kalorier: " + totalCalories);
     }
-    private static boolean isInteger(String str) {
-        try {
-            Integer.parseInt(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
 
 }

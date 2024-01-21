@@ -52,6 +52,14 @@ public class MatDatabas_utils {
             return 0;
         }
     }
+    public static boolean isInteger(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
     public static String convertIntToFood(String selectedProductInt) {
         int selectedProduct = (Integer.parseInt(selectedProductInt));
