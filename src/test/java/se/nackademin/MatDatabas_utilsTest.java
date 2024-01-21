@@ -42,14 +42,14 @@ class MatDatabas_utilsTest {
     }
     @Test
     public void testCalculateCaloriesForNonExistingFood() {
-        // Test data for a non-existing food
+        // Arrange
         String nonExistingFoodName = "NonExistingFood";
         double amountInGrams = 150.0;
 
-        // Calculate calories for non-existing food
+        // Act
         double calculatedCalories = MatDatabas_utils.calculateCalories(nonExistingFoodName, amountInGrams);
 
-        // Since the food is not in the database, the expected result is 0
+        // Assert
         assertEquals(0.0, calculatedCalories, 0.001);
     }
 }

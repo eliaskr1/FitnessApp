@@ -7,6 +7,7 @@ public class Main {
     public static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         String choice;
+        label:
         while (true){
 
 
@@ -23,14 +24,18 @@ public class Main {
 
 
             if (!choice.isEmpty()) {
-                if (Objects.equals(choice, "1")) {
-                    BMI.BMIcalc();
-                } else if (Objects.equals(choice, "2")) {
-                    MatDatabas.macroTrack();
-                } else if (Objects.equals(choice, "3")) {
-                    break;
-                } else {
-                    System.out.println("Vänligen ange giltigt val.");
+                switch (choice) {
+                    case "1":
+                        BMI.BMIcalc();
+                        break;
+                    case "2":
+                        MatDatabas.macroTrack();
+                        break;
+                    case "3":
+                        break label;
+                    default:
+                        System.out.println("Vänligen ange giltigt val.");
+                        break;
                 }
             }
 

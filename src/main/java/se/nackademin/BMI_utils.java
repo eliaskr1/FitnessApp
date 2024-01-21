@@ -2,7 +2,7 @@ package se.nackademin;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Scanner;
+import java.util.Optional;
 
 public class BMI_utils {
     public static double calculateBMI(double weight, double height) {
@@ -10,12 +10,16 @@ public class BMI_utils {
     }
 
 
-    static char getValidGenderInput() {
+    static char getValidGenderInput(Optional<String> testInput) {
         char gender = ' ';
         boolean validInput = false;
+
         while (!validInput) {
             System.out.print('\n' + "M  = Man" +'\n' + "K = Kvinna" + '\n' + "Ange ditt kön (M/K)/ : ");
-            String input = Main.scanner.next().toUpperCase();
+
+            String input;
+            input = testInput.map(String::toUpperCase).orElseGet(() -> Main.scanner.nextLine().toUpperCase());
+
             if (input.equals("M") || input.equals("K")) {
                 gender = input.charAt(0);
                 validInput = true;
@@ -23,35 +27,44 @@ public class BMI_utils {
                 System.out.println("Ogiltig köninmatning. Ange endast 'M' eller 'K'.");
             }
         }
+        //Main.scanner.nextLine();
         return gender;
     }
 
-    static int getValidIntegerInput(String message) {
+    static int getValidIntegerInput(Optional<String> testInput, String message) {
         int value = 0;
         boolean validInput = false;
         while (!validInput) {
             try {
-                System.out.print(message);
-                value = Integer.parseInt(Main.scanner.next());
-                validInput = true;
+                if (testInput.isPresent()) {
+                    value = Integer.parseInt(testInput.get());
+                    validInput = true;
+                } else {
+                    System.out.print(message);
+                    value = Integer.parseInt(Main.scanner.next());
+                    validInput = true;
+                }
             } catch (NumberFormatException e) {
                 System.out.println("Ogiltigt val, vänligen välj en giltig siffra.");
             }
         }
 
-        Main.scanner.nextLine();
-
         return value;
     }
 
-    static double getValidNumericInput(String message) {
+    static double getValidNumericInput(Optional<String> testInput, String message) {
         double value = 0;
         boolean validInput = false;
         while (!validInput) {
             try {
-                System.out.print(message);
-                value = Double.parseDouble(Main.scanner.next());
-                validInput = true;
+                if (testInput.isPresent()){
+                    value = Double.parseDouble(testInput.get());
+                    validInput = true;
+                } else {
+                    System.out.print(message);
+                    value = Double.parseDouble(Main.scanner.nextLine());
+                    validInput = true;
+                }
             } catch (NumberFormatException e) {
                 System.out.println("Ogiltigt val, vänligen välj en giltig siffra.");
             }
@@ -64,7 +77,7 @@ public class BMI_utils {
         boolean validInput = false;
         while (!validInput) {
             System.out.print("1. Behålla" + '\n' + "2. Öka" + '\n' + "3. Minska" + '\n' + "Vad är ditt mål med din vikt? ");
-            goal = getValidIntegerInput("");
+            goal = getValidIntegerInput(Optional.empty(), "");
             if (goal == 1 || goal == 2 || goal == 3) {
                 validInput = true;
             } else {
@@ -79,7 +92,7 @@ public class BMI_utils {
         boolean validInput = false;
         do {
             System.out.print('\n' + "1. Stillasittande" + '\n' + "2. Lätt" + '\n' + "3. Måttlig" + '\n' + "4. Tung" + '\n' + "Vad är din aktivitetsnivå? ");
-            activityLevel = getValidIntegerInput("");
+            activityLevel = getValidIntegerInput(Optional.empty(), "");
             if (activityLevel == 1 || activityLevel == 2 || activityLevel == 3 || activityLevel == 4) {
                 validInput = true;
             } else {

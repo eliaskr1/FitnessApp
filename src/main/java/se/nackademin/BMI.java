@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Scanner;
+import java.util.Optional;
 
 import static se.nackademin.BMI_utils.*;
 
@@ -11,16 +12,16 @@ public class BMI {
 
 
     public static void BMIcalc() {
-        double weight = getValidNumericInput("Hur mycket väger du (i kg)?: ");
-        double heightInCentimeters = getValidNumericInput("Hur lång är du (i cm)?: ");
+        double weight = getValidNumericInput(Optional.empty(), "Hur mycket väger du (i kg)?: ");
+        double heightInCentimeters = getValidNumericInput(Optional.empty(), "Hur lång är du (i cm)?: ");
 
         double heightInMeters = heightInCentimeters / 100.0;
 
         int bmi = (int) calculateBMI(weight, heightInMeters);
         System.out.println('\n' + "Ditt BMI är: " + bmi);
 
-        char gender = getValidGenderInput();
-        int age = getValidIntegerInput("Ange din ålder: ");
+        char gender = getValidGenderInput(Optional.empty());
+        int age = getValidIntegerInput(Optional.empty(), "Ange din ålder: ");
 
         int activityLevel = getValidActivityLevelInput();
 
@@ -36,21 +37,18 @@ public class BMI {
             System.out.println("Ditt dagliga kaloriintag för att öka i vikt: " + caloriesForGain);
 
         } else if (goal == 3) { //Minska intag
-            double intendedCaloricDeficitPerDay = getValidNumericInput("Ange hur stor kaloriunderskott du vill ha (i kalorier): ");
-            double kilogramsToLose = getValidNumericInput("Ange hur många kilo du vill gå ner: ");
+            double intendedCaloricDeficitPerDay = getValidNumericInput(Optional.empty(), "Ange hur stor kaloriunderskott du vill ha (i kalorier): ");
+            double kilogramsToLose = getValidNumericInput(Optional.empty(), "Ange hur många kilo du vill gå ner: ");
 
 
-            double kgAttGåNer = getValidNumericInput("Ange hur många kilo du vill gå ner: ");
+            double kgAttGåNer = getValidNumericInput(Optional.empty(), "Ange hur många kilo du vill gå ner: ");
             int kalorierAttMinska = antalerKalorierTillDatum(kgAttGåNer);
             int totalaMängdenKalorierMinskning = suggestedCaloricIntake - kalorierAttMinska;
 
             System.out.println("Antal kalorier att minska: " + kalorierAttMinska + " Kalorier"
             + "\n Din totala mängd kalorier blir " + totalaMängdenKalorierMinskning);
-            
-
-
-
 
         }
+        Main.scanner.nextLine();
     }
 }
