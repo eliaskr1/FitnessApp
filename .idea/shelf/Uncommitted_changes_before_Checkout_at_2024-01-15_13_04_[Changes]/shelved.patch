@@ -1,0 +1,109 @@
+Index: src/main/java/se/nackademin/MatDatabas_utils.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package se.nackademin;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\n\r\npublic class MatDatabas_utils {\r\n    // Metoder för att skapa våran mat databas\r\n    private static Map<String, Double> foodMap;\r\n\r\n    public MatDatabas_utils() {\r\n        foodMap = new HashMap<>();\r\n    }\r\n\r\n    public void addFood(String foodName, double caloriesPer100Grams) {\r\n        foodMap.put(getFirstWord(foodName).toLowerCase(), caloriesPer100Grams);\r\n    }\r\n\r\n    public static void displayFoodList() {\r\n        for (String food : foodMap.keySet()) {\r\n            System.out.println(capitalFirstLetter(food));\r\n        }\r\n    }\r\n    public static double calculateCalories(String foodName, double amountInGrams) {\r\n        // Kontrollera om maten finns i databasen\r\n        if (foodMap.containsKey(foodName.toLowerCase())) {\r\n            double caloriesPer100Grams = foodMap.get(foodName.toLowerCase());\r\n            return (caloriesPer100Grams / 100.0) * amountInGrams;\r\n        } else {\r\n            System.out.println(\"Maten hittades inte i databasen.\");\r\n            return 0;\r\n        }\r\n    }\r\n    private static String getFirstWord(String input) {\r\n        return input.split(\"\\\\s+\")[0];\r\n    }\r\n    private static String capitalFirstLetter(String input) {\r\n        return input.substring(0, 1).toUpperCase() + input.substring(1);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/se/nackademin/MatDatabas_utils.java b/src/main/java/se/nackademin/MatDatabas_utils.java
+--- a/src/main/java/se/nackademin/MatDatabas_utils.java	(revision 2a9c5fc37114d1914fd600467ed36c97d4ec4af4)
++++ b/src/main/java/se/nackademin/MatDatabas_utils.java	(date 1705320165232)
+@@ -12,7 +12,7 @@
+     }
+ 
+     public void addFood(String foodName, double caloriesPer100Grams) {
+-        foodMap.put(getFirstWord(foodName).toLowerCase(), caloriesPer100Grams);
++        foodMap.put(foodName.toLowerCase(), caloriesPer100Grams);
+     }
+ 
+     public static void displayFoodList() {
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c040b21b-87c5-46d3-ad3a-4ef28af946f2\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/se/nackademin/BMI.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/se/nackademin/BMI_utils.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/se/nackademin/Main.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/se/nackademin/MatDatabas.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/se/nackademin/MatDatabas_utils.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 7\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2aoTZOm7a6rKdPNIG7LAHvMzw0Q\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"onboarding.tips.debug.path\": \"C:/Users/elias/IdeaProjects/fitnessApp/src/main/java/se/nackademin/Main.java\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c040b21b-87c5-46d3-ad3a-4ef28af946f2\" name=\"Changes\" comment=\"\" />\r\n      <created>1704983991929</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1704983991929</updated>\r\n      <workItem from=\"1704983994696\" duration=\"2855000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2a9c5fc37114d1914fd600467ed36c97d4ec4af4)
++++ b/.idea/workspace.xml	(date 1705320059955)
+@@ -4,17 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c040b21b-87c5-46d3-ad3a-4ef28af946f2" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/BMI.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/BMI_utils.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/Main.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/MatDatabas.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/se/nackademin/MatDatabas_utils.java" afterDir="false" />
++    <list default="true" id="c040b21b-87c5-46d3-ad3a-4ef28af946f2" name="Changes" comment="first commit">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -29,7 +20,15 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
+   </component>
+   <component name="ProjectColorInfo"><![CDATA[{
+   "associatedIndex": 7
+@@ -45,7 +44,7 @@
+     "Application.Main.executor": "Run",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "master",
++    "git-widget-placeholder": "JessicasGren",
+     "kotlin-language-version-configured": "true",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+@@ -56,6 +55,7 @@
+     "project.structure.last.edited": "Modules",
+     "project.structure.proportion": "0.0",
+     "project.structure.side.proportion": "0.0",
++    "settings.editor.selected.configurable": "preferences.pluginManager",
+     "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
+@@ -74,11 +74,24 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1704983991929</updated>
+-      <workItem from="1704983994696" duration="2855000" />
++      <workItem from="1704983994696" duration="8602000" />
++    </task>
++    <task id="LOCAL−00001" summary="first commit">
++      <option name="closed" value="true" />
++      <created>1705054910665</created>
++      <option name="number" value="LOCAL−00001" />
++      <option name="presentableId" value="LOCAL−00001" />
++      <updated>1705054910665</updated>
+     </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Added code from last project. divided classes into new file structure." />
++    <MESSAGE value="first commit" />
++    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
++  </component>
+ </project>
+\ No newline at end of file

@@ -18,6 +18,10 @@ public class MatDatabas_utils {
         foodMap.put(getFirstWord(foodName).toLowerCase(), caloriesPer100Grams);
     }
 
+    public double getCalories(String foodName) {
+        return foodMap.getOrDefault(getFirstWord(foodName).toLowerCase(), 0.0);
+    }
+
     public static void displayFoodList() {
         int count = 0;
         int index = 1;
@@ -49,6 +53,14 @@ public class MatDatabas_utils {
         } else {
             System.out.println("Maten hittades inte i databasen.");
             return 0;
+        }
+    }
+    public static boolean isInteger(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 
