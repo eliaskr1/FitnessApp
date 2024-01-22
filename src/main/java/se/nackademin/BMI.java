@@ -36,10 +36,6 @@ public class BMI {
             System.out.println("Ditt dagliga kaloriintag för att öka i vikt: " + caloriesForGain);
 
         } else if (goal == 3) { //Minska intag
-            double intendedCaloricDeficitPerDay = getValidNumericInput("Ange hur stor kaloriunderskott du vill ha (i kalorier): ");
-            double kilogramsToLose = getValidNumericInput("Ange hur många kilo du vill gå ner: ");
-
-
             double kgAttGåNer = getValidNumericInput("Ange hur många kilo du vill gå ner: ");
             int kalorierAttMinska = antalerKalorierTillDatum(kgAttGåNer);
             int totalaMängdenKalorierMinskning = suggestedCaloricIntake - kalorierAttMinska;

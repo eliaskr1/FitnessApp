@@ -126,17 +126,29 @@ public class BMI_utils {
 
     static Long frågaOmDatum(){
 
-        System.out.println("Ange ett datum där du vill nå ditt viktmål(ÅÅÅÅ-MM-DD): ");
-        String inputDatum = Main.scanner.next();
-
         long antalDagar = 0;
 
-        LocalDate valtDatum = LocalDate.parse(inputDatum);
-        //Räknar dagar från från dagens datum till datum vi har valt
-        antalDagar = LocalDate.now().until(valtDatum, ChronoUnit.DAYS);
+        while (true) {
 
+            try {
+                System.out.println("Ange ett datum där du vill nå ditt viktmål(ÅÅÅÅ-MM-DD): ");
+                String inputDatum = Main.scanner.next();
+
+                LocalDate valtDatum = LocalDate.parse(inputDatum);
+                if (valtDatum.isBefore(LocalDate.now())) {
+                    System.out.println("Du har valt ett datum före dagens datum. Försök igen.");
+                } else {
+                    // Räknar antalet dagar från dagens datum till det valda datumet
+                    antalDagar = LocalDate.now().until(valtDatum, ChronoUnit.DAYS);
+                    break;
+                }
+            } catch (Exception e){
+                System.out.println("Ogiltigt datumformat. Använd formatet ÅÅÅÅ-MM-DD.");
+            }
+            //Räknar dagar från från dagens datum till datum vi har valt
+
+        }
         Main.scanner.nextLine();
-
 
         return antalDagar;
 
