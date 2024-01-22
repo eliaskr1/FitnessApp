@@ -45,7 +45,7 @@ public class MatDatabas {
                 break;
 
             System.out.println('\n' + "---------------------------------------------------------MATLISTAN---------------------------------------------------");
-            MatDatabas_utils.displayFoodList(); // Antagligen en metod för att skriva ut matlistan
+            displayFoodList(); // Skriva ut matlistan
             System.out.println('\n' + "---------------------------------------------------------------------------------------------------------------------");
             System.out.print('\n' + "Välj en produkt: ");
             String selectedFoodInput = Main.scanner.nextLine().toLowerCase();// Convert to lowercase
@@ -75,6 +75,7 @@ public class MatDatabas {
             }
             // Utifrån användarens val i selectedFoods skickar vi värdet till calculateCalories metoden.
             //Användares val i gram finns i amountInGrams, värde skickas till calculateCalories metoden.
+
 
             double calories = MatDatabas_utils.calculateCalories(selectedFoodInput, amountInGrams);
             System.out.println("Calories: " + calories);
