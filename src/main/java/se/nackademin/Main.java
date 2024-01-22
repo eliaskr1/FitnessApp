@@ -7,10 +7,14 @@ public class Main {
     public static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         String choice;
+        label:
         while (true){
 
 
-            System.out.println('\n' + "*** VÄLKOMMEN TILL FITNESSAPP ***\n");
+            System.out.println("""
+
+                    *** VÄLKOMMEN TILL FITNESSAPP ***
+                    """);
             System.out.println("1. BMI Calculator");
             System.out.println("2. Macro tracker");
             System.out.println("3. Avsluta programmet\n");
@@ -20,14 +24,18 @@ public class Main {
 
 
             if (!choice.isEmpty()) {
-                if (Objects.equals(choice, "1")) {
-                    BMI.BMIcalc();
-                } else if (Objects.equals(choice, "2")) {
-                    MatDatabas.macroTrack();
-                } else if (Objects.equals(choice, "3")) {
-                    break;
-                } else {
-                    System.out.println("Vänligen ange giltigt val.");
+                switch (choice) {
+                    case "1":
+                        BMI.BMIcalc();
+                        break;
+                    case "2":
+                        MatDatabas.macroTrack();
+                        break;
+                    case "3":
+                        break label;
+                    default:
+                        System.out.println("Vänligen ange giltigt val.");
+                        break;
                 }
             }
 

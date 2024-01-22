@@ -3,6 +3,8 @@ package se.nackademin;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.Math.round;
+
 
 public class MatDatabas_utils {
     // Metoder för att skapa våran mat databas
@@ -14,6 +16,10 @@ public class MatDatabas_utils {
 
     public void addFood(String foodName, double caloriesPer100Grams) {
         foodMap.put(getFirstWord(foodName).toLowerCase(), caloriesPer100Grams);
+    }
+
+    public double getCalories(String foodName) {
+        return foodMap.getOrDefault(getFirstWord(foodName).toLowerCase(), 0.0);
     }
 
     public static void displayFoodList() {
@@ -28,7 +34,7 @@ public class MatDatabas_utils {
             count++;
 
             // Om 4 produkter har skrivits ut, radbrytning och återställning av count.
-            if (count % 4 == 0) {
+            if (count % 5 == 0) {
                 System.out.print("||");
                 System.out.println();
                 count = 0;
@@ -37,15 +43,42 @@ public class MatDatabas_utils {
     }
 
     public static double calculateCalories(String foodName, double amountInGrams) {
+        if (foodName == null) {
+            throw new IllegalArgumentException("Null-värden ej tillåtna");
+        }
         // Kontrollera om maten finns i databasen
         if (foodMap.containsKey(foodName.toLowerCase())) {
             double caloriesPer100Grams = foodMap.get(foodName.toLowerCase());
-            return (caloriesPer100Grams / 100.0) * amountInGrams;
+            return round((caloriesPer100Grams / 100.0) * amountInGrams);
         } else {
             System.out.println("Maten hittades inte i databasen.");
             return 0;
         }
     }
+    public static boolean isInteger(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static String convertIntToFood(String selectedProductInt) {
+        int selectedProduct = (Integer.parseInt(selectedProductInt));
+        int count = 1;
+
+        for (String food : foodMap.keySet()) {
+            if (count == selectedProduct) {
+                return food;
+            }
+            count++;
+        }
+        return null;
+    }
+
+    // Hjälpmetod för att kolla om en sträng är en int
+
     private static String getFirstWord(String input) {
         return input.split("\\s+")[0];
     }

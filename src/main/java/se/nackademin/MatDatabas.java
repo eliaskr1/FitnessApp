@@ -1,37 +1,38 @@
 package se.nackademin;
 
 
-import static se.nackademin.MatDatabas_utils.displayFoodList;
+
+
 
 public class MatDatabas {
     public static void macroTrack() {
         // Vi skapar en matdatabas
         MatDatabas_utils matDB = new MatDatabas_utils();
-        matDB.addFood("Kyckling (grillad)", 165);
-        matDB.addFood("Nötfärs (10% fett)", 250);
-        matDB.addFood("Lax (bakad)", 206);
-        matDB.addFood("Ris (kokt)", 130);
-        matDB.addFood("Pasta (kokt)", 130);
-        matDB.addFood("Ägg (kokt)", 155);
-        matDB.addFood("Mjölk (hel)", 61);
-        matDB.addFood("Broccoli (kokt)", 55);
-        matDB.addFood("Potatis (kokt)", 77);
+        matDB.addFood("Kyckling", 165);
+        matDB.addFood("Nötfärs", 250);
+        matDB.addFood("Lax", 206);
+        matDB.addFood("Ris", 130);
+        matDB.addFood("Pasta", 130);
+        matDB.addFood("Ägg", 155);
+        matDB.addFood("Mjölk", 61);
+        matDB.addFood("Broccoli", 55);
+        matDB.addFood("Potatis", 77);
         matDB.addFood("Banan", 89);
         matDB.addFood("Avokado", 160);
-        matDB.addFood("Havregryn (kokt)", 68);
-        matDB.addFood("Mandel (rostad)", 579);
-        matDB.addFood("Mörk choklad (70% kakao)", 604);
+        matDB.addFood("Havregryn", 68);
+        matDB.addFood("Mandel", 579);
+        matDB.addFood("Mörkchoklad", 604);
         matDB.addFood("Granatäpple", 83);
         matDB.addFood("Blåbär", 57);
         matDB.addFood("Havrebröd", 68);
-        matDB.addFood("Röd paprika", 31);
+        matDB.addFood("Paprika", 31);
         matDB.addFood("Olivolja", 884);
         matDB.addFood("Fetaost", 264);
-        matDB.addFood("Yoghurt (grekisk)", 59);
-        matDB.addFood("Gröna ärtor (kokta)", 81);
-        matDB.addFood("Kalkonbröst (kokt)", 135);
-        matDB.addFood("Quinoa (kokt)", 120);
-        matDB.addFood("Cashewnötter (rostade)", 553);
+        matDB.addFood("Yoghurt", 59);
+        matDB.addFood("Ärtor", 81);
+        matDB.addFood("Kalkonbröst", 135);
+        matDB.addFood("Quinoa", 120);
+        matDB.addFood("Cashewnötter", 553);
 
         //Spara totala kalorier här
         double totalCalories = 0.0;
@@ -43,30 +44,46 @@ public class MatDatabas {
             if (appendFood.equals("nej"))
                 break;
 
-            System.out.println('\n' + "----------------------------------------------MATLISTAN---------------------------------------");
-            displayFoodList(); // Antagligen en metod för att skriva ut matlistan
-            System.out.println('\n' + "----------------------------------------------------------------------------------------------");
+            System.out.println('\n' + "---------------------------------------------------------MATLISTAN---------------------------------------------------");
+            displayFoodList(); // Skriva ut matlistan
+            System.out.println('\n' + "---------------------------------------------------------------------------------------------------------------------");
             System.out.print('\n' + "Välj en produkt: ");
-            String selectedFood = Main.scanner.nextLine().toLowerCase(); // Convert to lowercase
+            String selectedFoodInput = Main.scanner.nextLine().toLowerCase();// Convert to lowercase
 
-            // Vi låter användaren ange vikt i gram
-            System.out.print("Hur många gram åt du?: ");
-            double amountInGrams = Main.scanner.nextDouble();
+            // Intellij varnar för nullvärde. Här kontrolleras det om inmatningen endast innehåller mellanslag eller är tom
+            if (selectedFoodInput.trim().isEmpty()) {
+                System.out.println("Felaktig inmatning. Vänligen ange en giltig produkt.");
+                continue; // Gå till nästa steg
+            }
 
-            Main.scanner.nextLine();
+            double amountInGrams;
 
+            if (MatDatabas_utils.isInteger(selectedFoodInput)) {
+            // Användaren har angett en siffra som motsvarar produktnummer;
+                selectedFoodInput = MatDatabas_utils.convertIntToFood(selectedFoodInput);
+
+                // Vi låter användaren ange vikt i gram
+                System.out.print("Hur många gram åt du?: ");
+                amountInGrams = Main.scanner.nextDouble();
+                Main.scanner.nextLine(); // Läs upp överblivet nyttelinjetangent
+
+            } else {
+                // Vi låter användaren ange vikt i gram
+                System.out.print("Hur många gram åt du?: ");
+                amountInGrams = Main.scanner.nextDouble();
+                Main.scanner.nextLine(); // Läs upp överblivet nyttelinjetangent
+            }
             // Utifrån användarens val i selectedFoods skickar vi värdet till calculateCalories metoden.
             //Användares val i gram finns i amountInGrams, värde skickas till calculateCalories metoden.
-            //Detta ges till variabeln calories som sedan presenteras
-            double calories = MatDatabas_utils.calculateCalories(selectedFood, amountInGrams);
+
+
+            double calories = MatDatabas_utils.calculateCalories(selectedFoodInput, amountInGrams);
             System.out.println("Calories: " + calories);
 
             totalCalories += calories;
         }
+
         System.out.println("Totala kalorier: " + totalCalories);
-
-
-        Main.scanner.nextLine();
-
     }
+
 }
