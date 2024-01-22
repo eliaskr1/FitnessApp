@@ -45,7 +45,7 @@ public class MatDatabas {
                 break;
 
             System.out.println('\n' + "---------------------------------------------------------MATLISTAN---------------------------------------------------");
-            displayFoodList(); // Skriva ut matlistan
+            MatDatabas_utils.displayFoodList(); // Skriva ut matlistan
             System.out.println('\n' + "---------------------------------------------------------------------------------------------------------------------");
             System.out.print('\n' + "Välj en produkt: ");
             String selectedFoodInput = Main.scanner.nextLine().toLowerCase();// Convert to lowercase
