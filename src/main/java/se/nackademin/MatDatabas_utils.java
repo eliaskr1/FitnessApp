@@ -39,6 +39,9 @@ public class MatDatabas_utils {
     }
 
     public static double calculateCalories(String foodName, double amountInGrams) {
+        if (foodName == null) {
+            throw new IllegalArgumentException("Null-värden ej tillåtna");
+        }
         // Kontrollera om maten finns i databasen
         if (foodMap.containsKey(foodName.toLowerCase())) {
             double caloriesPer100Grams = foodMap.get(foodName.toLowerCase());
