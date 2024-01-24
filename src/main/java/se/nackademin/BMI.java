@@ -29,12 +29,12 @@ public class BMI {
         int age = BMI_utils.getValidIntegerInput(Optional.empty(), "Ange din ålder: ");
 
         // Beräkna och skriv ut rekommenderat dagligt kaloriintag baserat på användarinformation
-        int activityLevel = BMI_utils.getValidActivityLevelInput();
+        int activityLevel = BMI_utils.getValidActivityLevelInput(Optional.empty());
         int suggestedCaloricIntake = BMI_utils.suggestCaloricIntake(gender, age, weight, heightInMeters, activityLevel);
         System.out.println('\n' + "Baserat på din basalmetabolism, aktivitetsnivå och ålder är den rekommenderade kaloriintaget/dag: " + suggestedCaloricIntake + " kal"+'\n');
           
         // Hämta användarinput för viktrelaterat mål
-        int goal = BMI_utils.getValidGoalInput();
+        int goal = BMI_utils.getValidGoalInput(Optional.empty());
 
         if (goal == 1) { //Behålla intag
             System.out.println("Ditt dagliga intag för att behålla din vikt är: " + suggestedCaloricIntake);
