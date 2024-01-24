@@ -4,12 +4,25 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
+/**
+ * En klass som räknar ut BMI
+ */
 public class BMI_utils {
+      /**
+     * En metod som räknar ut BMI med hjälp av en matematisk formel.
+     * @param weight
+     * @param height
+     * @return
+     */
     public static double calculateBMI(double weight, double height) {
         return weight / (height * height);
     }
 
-
+     /**
+     * Kollar om det är en med eller Kvinna med hjälp av en användarinput
+     * @param testInput
+     * @return valet av kön
+     */
     static char getValidGenderInput(Optional<String> testInput) {
         char gender = ' ';
         boolean validInput = false;
@@ -31,6 +44,12 @@ public class BMI_utils {
         return gender;
     }
 
+       /**
+     * En användarinput där man får skriva ett heltal.
+     * @param testInput
+     * @param message
+     * @return
+     */
     static int getValidIntegerInput(Optional<String> testInput, String message) {
         int value = 0;
         boolean validInput = false;
@@ -52,7 +71,12 @@ public class BMI_utils {
 
         return value;
     }
-
+    /**
+     * En användarinput som ber om ett numeriskt värde.
+     * @param testInput
+     * @param message
+     * @return
+     */
     static double getValidNumericInput(Optional<String> testInput, String message) {
         double value = 0;
         boolean validInput = false;
@@ -74,6 +98,10 @@ public class BMI_utils {
         return value;
     }
 
+    /**
+     * Frågar om dina mål.
+     * @return
+     */
     static int getValidGoalInput() {
         int goal = 0;
         boolean validInput = false;
@@ -89,6 +117,10 @@ public class BMI_utils {
         return goal;
     }
 
+    /**
+     * Frågar om aktivitetsnivå
+     * @return
+     */
     static int getValidActivityLevelInput() {
         int activityLevel;
         boolean validInput = false;
@@ -104,6 +136,15 @@ public class BMI_utils {
         return activityLevel;
     }
 
+    /**
+     * Räknar ut vilken kalorimängd du bör äta.
+     * @param gender
+     * @param age
+     * @param weight
+     * @param height
+     * @param activityLevel
+     * @return
+     */
     static int suggestCaloricIntake(char gender, int age, double weight, double height, int activityLevel) {
         int suggestedCaloricIntake;
         double bmr; //Basal Metabolic Rate, antal kalorier/dag som kroppen behöver.
@@ -138,7 +179,10 @@ public class BMI_utils {
         return suggestedCaloricIntake;
     }
 
-
+    /**
+     * Kontrollerar hur många dagar det är från dagens till datum till det datum man har valt.
+     * @return
+     */
     static Long frågaOmDatum(){
 
         long antalDagar = 0;
@@ -168,7 +212,11 @@ public class BMI_utils {
         return antalDagar;
 
     }
-    //Räknar hur mycket kalorier man behöver minska
+    /**
+     * Hur många kalorier fram till datum man bör minska.
+     * @param kilogramsToLose
+     * @return
+     */
     static int antalerKalorierTillDatum(double kilogramsToLose) {
         return (int) Math.ceil((kilogramsToLose * 7700) / frågaOmDatum());
     }
