@@ -68,7 +68,12 @@ public class MatDatabas {
             }
 
             System.out.print("Hur många gram åt du?: ");
-            amountInGrams = Main.scanner.nextDouble();
+            try {
+                amountInGrams = Main.scanner.nextDouble();
+            } catch (Exception e) {
+                System.out.println("Ej giltigt tal, antar 100g...");
+                amountInGrams = 100;
+            }
             Main.scanner.nextLine();
 
             /*
@@ -82,8 +87,14 @@ public class MatDatabas {
             Utifrån användarens val av produkt skickar vi värdet till calculateCalories metoden som första parameter.
             Användares val i gram finns i amountInGrams, värde skickas till calculateCalories metoden som andra parameter.
              */
-            double calories = MatDatabas_utils.calculateCalories(selectedFoodInput, amountInGrams);
-            System.out.println("Calories: " + calories);
+            double calories;
+
+            if (selectedFoodInput != null) {
+                calories = MatDatabas_utils.calculateCalories(selectedFoodInput, amountInGrams);
+                System.out.println("Calories: " + calories);
+            } else {
+                calories = 0;
+            }
 
             /*
             Summering av kalorier.
