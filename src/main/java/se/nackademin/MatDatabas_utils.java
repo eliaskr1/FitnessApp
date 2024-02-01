@@ -114,7 +114,10 @@ public class MatDatabas_utils {
      * @return den matchande produkten eller null vid misslyckande
      */
     public static String convertIntToFood(String selectedProductInt) {
-        int selectedProduct = (Integer.parseInt(selectedProductInt));
+        int selectedProduct;
+
+        selectedProduct = (Integer.parseInt(selectedProductInt));
+
         int count = 1;
 
         for (String food : foodMap.keySet()) {
